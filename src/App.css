@@ -1,0 +1,158 @@
+
+.app{
+  width: 28vw;
+  max-width: 400px;
+  height: auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  color: #334358;
+}
+.app > h1{
+  color: white;
+  margin-bottom: 25px;
+  font-size: 40px;
+  font-weight: lighter;
+}
+
+.content{
+  padding: 20px;
+  width: 100%;
+  min-height: 500px;
+  background: white;
+  border-radius: 7%;
+}
+
+#search-box {
+  position: relative;
+  width: 100%;
+
+}
+
+#search-box > input {
+  width: 100%;
+  height: 40px;
+  border: none;
+  border-radius: 10px;
+  font-size: 14px;
+  background: #f9f9fb;
+}
+
+#search-box > .icon {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-45%);
+  color: gray;
+  font-size: 30px;
+  border:none;
+  background: none;
+  cursor: pointer;
+}
+
+
+.main{
+  margin: 20px 0;
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.cityImages{
+  width: 100%;
+  height: 150px;
+  background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-QE5a8EvkGN4wPxCbVgS2iPxI88_4XGK5Mw&s");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position:center;
+  border-radius: 15px;
+
+}
+
+.currentWeather{
+  margin: 10px 0;
+  width: 100%;
+}
+
+
+.currentWeather > .cityName{
+  font-size: 30px;
+  font-weight: bold;
+  text-align: start;
+}
+
+.currentWeather > p{
+  text-align: start;
+  position: relative;
+}
+.temp{
+  font-size: 40px;
+  font-weight: bold;
+  text-align: start;
+  margin-right: 30px;
+}
+
+.description{
+  font-size: 20px;
+  font-weight: lighter;
+}
+.dIcon {
+  position: absolute;
+  top: -55px;
+  right: 0;
+  font-size: 90px;
+
+}
+
+
+.forecast{
+  width: 100%;
+  height: auto;
+  padding: 10px;
+  background: #f9f9fb;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+
+.forecastItem {
+  flex: 1;
+  text-align: center;
+}
+
+.forecastItem p {
+  margin: 5px 0;
+}
+
+.forecastIcon{
+  color: orange;
+  font-size: 50px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+@media screen and (max-width:976px){
+  .app{
+    width: 60vw;
+
+  }
+}
+
+@media screen and (max-width:610px){
+  .app{
+    width: 90vw;
+  }
+}
