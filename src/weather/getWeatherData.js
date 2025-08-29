@@ -1,7 +1,7 @@
 export async function getWeatherData(cityName='gyumri') {
   try {
     const res = await fetch(
-        `http://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=c2cb41d83e003e690090057aeeab736d`
+        `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=c2cb41d83e003e690090057aeeab736d`
     );
     const resultData = await res.json();
     return resultData;
