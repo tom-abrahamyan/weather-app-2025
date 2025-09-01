@@ -1,10 +1,15 @@
-import getWeatherIcon from "./getWeatherIcon.jsx";
-import getDailyAverageForecast from "./getDailyAverageForecast.js";
-function Forecast({ forecastData }) {
+import { useMemo, memo} from "react";
+import { useWeather } from "../context/WeatherContext.jsx";
+import getDailyAverageForecast from "../utils/getDailyAverageForecast.js";
+import getWeatherIcon from "../utils/getWeatherIcon.jsx";
 
-  if (!forecastData || !forecastData.list) return null;
+const Forecast = () => {
+  const { weatherData } = useWeather();
 
-  const dailyData = getDailyAverageForecast(forecastData.list);
+  const dailyData = useMemo(() => {
+    if (!weatherData || !weatherData.list) return [];
+    return getDailyAverageForecast(weatherData.list);
+  }, [weatherData?.list]);
 
   return (
       <div className="forecast">
@@ -13,7 +18,7 @@ function Forecast({ forecastData }) {
           const date = new Date(item.dt_txt);
           const weekday = date.toLocaleDateString("en-US", { weekday: "short" });
           const condition = item?.weather?.[0]?.main;
-          const weatherIcon = getWeatherIcon(condition)
+          const weatherIcon = getWeatherIcon(condition);
 
           return (
               <div className="forecastItem" key={index}>
@@ -25,24 +30,6 @@ function Forecast({ forecastData }) {
         })}
       </div>
   );
-}
+};
 
-export default Forecast;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+export default memo(Forecast);

@@ -6,8 +6,13 @@ export default function getWeatherIcon(condition){
     Clouds: <IoPartlySunny />,
     Rain: <IoRainy />,
     Thunderstorm: <IoThunderstorm />,
-    Snow: <IoSnow />
+    Snow: <IoSnow />,
+    Drizzle: <IoRainy />,
+    Mist: <IoPartlySunny />,
+    Fog: <IoPartlySunny />,
+    Haze: <IoPartlySunny />,
+    Smoke: <IoPartlySunny />
   };
 
- return weatherIcons[condition] || <IoPartlySunny />; // default
+ return weatherIcons[condition] || <IoSunny />; // default
 }
