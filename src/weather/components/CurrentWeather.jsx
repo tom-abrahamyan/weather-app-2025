@@ -15,12 +15,8 @@ const CurrentWeather = () => {
   const condition = weatherData?.list?.[0]?.weather?.[0]?.main;
   const weatherIcon = getWeatherIcon(condition);
 
-
-  const count = useRef(0);
-  count.current++
   return (
       <div className="main">
-        {count.current}
         <div
             className="cityImages"
             style={{ backgroundImage: `url(${imgSrc})` }}
