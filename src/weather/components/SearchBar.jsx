@@ -1,32 +1,26 @@
 import { IoIosSearch } from "react-icons/io";
-import {useState,useCallback,memo,useEffect} from "react";
-import {useWeather} from "../context/WeatherContext.jsx";
-import {getCityImage, getWeatherData} from "../utils/getWeatherData.js";
+import {useState,memo,useEffect} from "react";
+import { useDispatch } from "react-redux";  
+import {fetchWeather} from "../../store/slices/weatherSlice.js"
+
 
 function SearchBar() {
-  const [input,setinput] = useState("");
-  const {setCity, setWeatherData, setImgSrc} = useWeather();
+  const [input,setInput] = useState("");
+  const dispatch = useDispatch();
 
-  const getCity = useCallback(async (cityName)=>{
-      if(cityName.length > 2){
-        const data = await getWeatherData(cityName);
-        setWeatherData(data);
-        const image = await getCityImage(cityName);
-        setImgSrc(image);
-      }
-  },);
 
   useEffect(() => {
-    getCity("Gyumri");
+    dispatch(fetchWeather("gyumri"));
   }, []);
+
 
   function handleSubmit(e){
     e.preventDefault();
-    setCity(input);
-    getCity(input);
+    dispatch(fetchWeather(input));
+    setInput("");
   }
   function handleChange(e){
-    setinput(e.target.value);
+    setInput(e.target.value);
   }
 
   return(

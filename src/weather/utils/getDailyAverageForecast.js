@@ -16,7 +16,6 @@ function getDailyAverageForecast(list) {
     const avgTemp =
         data.temps.reduce((sum, t) => sum + t, 0) / data.temps.length;
 
-
     return {
       ...data.item,
       main: {

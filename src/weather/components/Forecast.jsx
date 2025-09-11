@@ -1,15 +1,16 @@
 import { useMemo, memo} from "react";
-import { useWeather } from "../context/WeatherContext.jsx";
-import getDailyAverageForecast from "../utils/getDailyAverageForecast.js";
+
+import { useSelector } from "react-redux";
+import { selectForecast } from "../../store/slices/weatherSlice.js";
 import getWeatherIcon from "../utils/getWeatherIcon.jsx";
 
 const Forecast = () => {
-  const { weatherData } = useWeather();
-
+  const weatherData = useSelector(selectForecast)
+  
   const dailyData = useMemo(() => {
-    if (!weatherData || !weatherData.list) return [];
-    return getDailyAverageForecast(weatherData.list);
-  }, [weatherData?.list]);
+    if (!weatherData) return [];
+    return weatherData;
+  }, [weatherData]);
 
   return (
       <div className="forecast">

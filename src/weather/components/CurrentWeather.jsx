@@ -1,25 +1,22 @@
-import { useWeather } from "../context/WeatherContext.jsx";
+
+import { useSelector } from "react-redux";
 import getWeatherIcon from "../utils/getWeatherIcon.jsx";
-import {memo, useRef} from "react";
+import {memo} from "react";
+import { selectCityName, selectDescription, selectTemp, selectCondition, selectImageUrl } from "../../store/slices/weatherSlice.js";
 
 const CurrentWeather = () => {
-  const { weatherData, imgSrc } = useWeather();
-  const temp = weatherData?.list?.[0]?.main?.temp
-      ? `${Math.round(weatherData.list[0].main.temp - 273)}°C`
-      : "";
-  const cityName = weatherData?.city?.name
-      ? `${weatherData.city.name} ${weatherData.city.country}`
-      : "";
-  const description =
-      weatherData?.list?.[0]?.weather?.[0]?.description || "";
-  const condition = weatherData?.list?.[0]?.weather?.[0]?.main;
-  const weatherIcon = getWeatherIcon(condition);
+  const temp = useSelector(selectTemp),
+        cityName = useSelector(selectCityName),
+        description = useSelector(selectDescription),
+        condition = useSelector(selectCondition),
+        weatherIcon = getWeatherIcon(condition),
+        imageUrl = useSelector(selectImageUrl);
 
   return (
       <div className="main">
         <div
             className="cityImages"
-            style={{ backgroundImage: `url(${imgSrc})` }}
+            style={{ backgroundImage: `url(${imageUrl})` }}
         ></div>
         <div className="currentWeather">
           <p className="cityName">{cityName}</p>
